@@ -1,7 +1,6 @@
 import { performAccessibilityChecks } from './access-test.js';
 
 export function onDocumentReady() {
-    console.log("Document is ready. Initializing form handlers...");
     const forms = document.querySelectorAll('.jotform-form');
 
     if (forms.length > 0) {
@@ -9,21 +8,17 @@ export function onDocumentReady() {
     }
 
     function handleFormSubmit(form) {
-        console.log("Attaching submit handler to form:", form);
         form.addEventListener('submit', handleSubmit.bind(null, form));
     }
 
     async function handleSubmit(form, event) {
         event.preventDefault();
-        console.log("Form submit intercepted. Performing accessibility checks...");
 
         // Perform accessibility checks before proceeding
         if (!performAccessibilityChecks()) {
-            console.error("Accessibility checks failed. Form submission halted.");
             return;
         }
 
-        console.log("Accessibility checks passed. Submitting form via AJAX...");
         const formData = new FormData(form);
         const submissionUrl = form.action;
 

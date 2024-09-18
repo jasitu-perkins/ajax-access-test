@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Observe each required form line for class attribute changes
     elements.forEach(element => {
         errorObserver.observe(element, config);
-        console.log("Observing element for changes:", element);
     });
 
     // Add click event listener to the submit button
@@ -80,15 +79,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!errorMessage.dataset.updated || !errorMessageUpdated) {
                 // Remove the (Required) text from the label
                 const labelText = label.textContent.replace("*", "").replace("(Required)", "").trim();
-                console.log("Original error message:", errorMessage.textContent);
 
                 if (shouldUpdateErrorMessage(errorMessage.textContent)) {
-                    console.log("Updating error message to:", `${labelText} is required.`);
                     errorMessage.textContent = `${labelText} is required.`;
                     errorMessage.dataset.updated = 'true';
                     errorMessageUpdated = true;
-                } else {
-                    console.log("Error message does not require an update.");
                 }
             }
             label.appendChild(errorMessageContainer);
@@ -102,24 +97,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const errorMessage = target.querySelector(".form-error-message");
         if (errorMessage) {
             errorMessage.style.display = 'none';
-            console.log("Hiding error message due to form submission.");
         }
         const validationError = target.querySelector(".form-validation-error");
         if (validationError) {
             validationError.classList.remove("form-validation-error");
-            console.log("Removing form validation error class.");
         }
     }
 
     // Handle submit button click
     function handleSubmitClick() {
         submitClicked = true;
-        console.log("Submit button clicked.");
         elements.forEach(element => {
             const validationError = element.querySelector(".form-validation-error");
             if (validationError) {
                 validationError.classList.add("form-validation-error");
-                console.log("Re-adding form validation error class.");
             }
         });
 
@@ -127,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const firstInvalidField = document.querySelector(".form-line-error input");
             if (firstInvalidField) {
                 firstInvalidField.focus();
-                console.log("Focusing on the first invalid field.");
             }
         }
     }

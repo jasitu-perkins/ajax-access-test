@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export function performAccessibilityChecks() {
     // Select all required form lines
     const elements = document.querySelectorAll(".jotform-form .form-line.jf-required");
@@ -258,4 +257,3 @@ document.addEventListener("DOMContentLoaded", () => {
         return errorMessageContent.startsWith("This field is required.");
     }
 });
->>>>>>> d37fa774c6303616003375fcf08e3c9917cd83a8

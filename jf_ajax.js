@@ -1,4 +1,4 @@
-import { performAccessibilityChecks } from './access-test.js';
+import { performAccessibilityChecks } from './jf_access.js';
 
 export function onDocumentReady() {
     const forms = document.querySelectorAll('.jotform-form');

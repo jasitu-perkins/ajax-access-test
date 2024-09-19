@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return errorMessageContent.startsWith("This field is required.");
     }
 });
-=======
+
 export function performAccessibilityChecks() {
     // Select all required form lines
     const elements = document.querySelectorAll(".jotform-form .form-line.jf-required");
